@@ -3,9 +3,50 @@
 <head>
 <meta charset="utf-8">
 <title>Home</title>
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-Home Page
+  <div class="container">
+    <nav>
+      <a href="#" data-fantasy="Archive">Archive</a>
+      <a href="#" data-fantasy="Historia">Historia</a>
+      <a href="#" data-fantasy="Home">Home</a>
+      <a href="#" data-fantasy="Characters">Characters</a>
+      <a href="#" data-fantasy="Chronicles">Chronicles</a>
+    </nav>
+  </div>
+
+  <!-- JavaScript to split letters for flip effect -->
+  <script>
+document.querySelectorAll('nav a').forEach(link => {
+  const text = link.textContent;
+  const fantasy = link.getAttribute('data-fantasy');
+  link.textContent = ''; // clear original text
+
+  for (let i = 0; i < text.length; i++) {
+    const span = document.createElement('span');
+
+    // English letter
+    const front = document.createElement('span');
+    front.className = 'front';
+    front.textContent = text[i];
+
+    // Fantasy letter
+    const back = document.createElement('span');
+    back.className = 'back';
+    back.textContent = fantasy[i] || ''; // match fantasy letter, if shorter
+
+    // Add horizontal spacing for fantasy letters
+    const spacing = 8; // px per letter, adjust as needed
+    back.style.transform = `rotateY(180deg) translateX(${i * spacing}px)`;
+
+    span.appendChild(front);
+    span.appendChild(back);
+
+    link.appendChild(span);
+  }
+});
+</script>
 </body>
 </html>

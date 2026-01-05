@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+  font-family: "TimeScript";
+  src: url("../fonts/timescript.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Container for page layout */
+.container {
+  max-width: 1920px;
+  min-width: 1024px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: rgba(0, 128, 255, 0.2);
+  height: 500px; /* temporary height for testing */
+}
+
+/* Navbar layout */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 20px 0;
+  background-color: #222;
+}
+
+/* Navbar links */
+nav a {
+  margin: 0 30px; /* 30px on left and right = 60px between links */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  perspective: 600px;
+}
+
+/* Each letter container */
+nav a span {
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, color 0.5s ease;
+  position: relative;
+}
+
+/* Front letter (English) */
+nav a span .front {
+  display: inline-block;
+  backface-visibility: hidden; /* hide when rotated */
+  color: #fff; /* visible initially */
+}
+
+/* Back letter (TimeScript) */
+nav a span .back {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'TimeScript', serif;
+  color: #ffffff;
+  transform: rotateY(180deg); /* start flipped */
+  backface-visibility: hidden;
+
+  /* move each letter to the right slightly */
+  /* you can adjust the px value */
+  margin-right: 20px; 
+}
+
+/* Flip each letter on hover */
+nav a:hover span {
+  transform: rotateY(180deg);
+}
+
+/* Hide English letters during flip */
+nav a:hover span .front {
+  color: transparent;
+}
