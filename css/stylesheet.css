@@ -1,58 +1,73 @@
-@charset "utf-8";
+@charset "utf-8";                                        /* ---- DOCUMENT PROPERTIES | FONT | PAGE ---- */
 /* CSS Document */
 
 @font-face {
-  font-family: "TimeScript";
-  src: url("../fonts/timescript.ttf") format("truetype");
+  font-family: "TimeScript"; 
+  src: url("../fonts/timescript.ttf") format("truetype"); /*implement custom font*/
   font-weight: normal;
   font-style: normal;
 }
 
+html, body { /* eliminate browser window/navbar gap */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1F1F1F
+}                                                        /* ---- NAVIGATION BAR ---- */
+/* --------------------------------------------------------------------------------------------------------------------*/
 /* Container for page layout */
+
 .container {
-  max-width: 1920px;
-  min-width: 1024px;
-  width: 90%;
+  max-width: 1920px; /* max screen size */
+  min-width: 1024px; /* min screen size */
+  width: 90%; /* container width */
   margin: 0 auto;
-  padding: 0 20px;
-  background-color: rgba(0, 128, 255, 0.2);
-  height: 500px; /* temporary height for testing */
+  height: 1000px; /* temporary height for testing */
+  background-color: #282828;
+  display: flex; /* navigation parent flexbox container */
+  justify-content: center; /* inner children justified */
 }
 
-/* Navbar layout */
+/* NAVBOX LAYOUT */
 nav {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  padding: 20px 0;
+  width: 90%;
+  display: flex; /* navigation parent flexbox container */
+  justify-content: center; /* inner children justified */
+  gap: 130px; /* spacing of elements in navbar */
+  padding: 20px 0; /* padding around links */
   background-color: #222;
+  position: fixed;
 }
 
-/* Navbar links */
-nav a {
-  margin: 0 30px; /* 30px on left and right = 60px between links */
-  font-family: Arial, sans-serif;
-  font-weight: bold;
+/* NAVBAR LINKS */
+nav a { /* links */
+  
+  font-family: "segoe";
+  font-weight: lighter;
   font-size: 20px;
   color: #fff;
   text-decoration: none;
-  display: inline-block;
-  perspective: 600px;
+  display: inline-block; /*?*/
+  perspective: 600px; /*?*/
+  text-align: center; 
+  
 }
 
-/* Each letter container */
+/* INDIVIDUAL LETTER CONTAINERS */
 nav a span {
   display: inline-block;
   transform-style: preserve-3d;
-  transition: transform 0.5s ease, color 0.5s ease;
+ transition: transform .6s ease; /* slow flip-back */
   position: relative;
 }
 
 /* Front letter (English) */
 nav a span .front {
   display: inline-block;
+  letter-spacing: 4px;
   backface-visibility: hidden; /* hide when rotated */
-  color: #fff; /* visible initially */
 }
 
 /* Back letter (TimeScript) */
@@ -63,20 +78,114 @@ nav a span .back {
   left: 0;
   font-family: 'TimeScript', serif;
   color: #ffffff;
-  transform: rotateY(180deg); /* start flipped */
-  backface-visibility: hidden;
-
-  /* move each letter to the right slightly */
-  /* you can adjust the px value */
-  margin-right: 20px; 
-}
-
-/* Flip each letter on hover */
-nav a:hover span {
   transform: rotateY(180deg);
+  backface-visibility: hidden; /* hide when facing away */
+	transition: color 0.3s, text-shadow 0.3s;  /* smooth glow transition */
+	
 }
 
-/* Hide English letters during flip */
-nav a:hover span .front {
-  color: transparent;
+/* Flip only the hovered letter */
+nav a span:hover {
+  transform: rotateY(180deg);
+  transition: transform 0.3s ease; /* fast flip-on */
+}
+/* glow flipped letter */
+nav a span:hover .back {
+text-shadow:
+    0 0 8px  #ffffff,
+    0 0 18px #ffffff,
+    0 0 35px #ffffff,
+    0 0 70px #ffffff,
+    0 0 120px #ffffff;
+}
+
+/* Current page link - default in fantasy script */
+nav a.current span .front { /* front word in timescript */
+  font-family: "TimeScript", serif;
+  color: #ffffff;
+}
+
+nav a.current span .back { /* back word in timescript */
+  font-family: "TimeScript", sans-serif;
+  color: #ffffff;
+ text-shadow:      /* glow shadow layers */
+    0 0 8px  #ffffff,
+    0 0 18px #ffffff,
+    0 0 35px #ffffff,
+    0 0 70px #ffffff,
+    0 0 120px #ffffff;
+}                                                          /* ---- PAGE TRANSITION ANIMATIONS ---- */
+
+/* --------------------------------------------------------------------------------------------------------------------*/
+/* Initial state when page starts entering */
+body.page-enter {
+  opacity: 0;
+  transform: translateX(-50px); /* slide in from left */
+}
+
+/* Animate to visible */
+body.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Leaving page animation */
+body.page-leave {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+body.page-leave-active {
+  opacity: 0;
+  transform: translateX(50px); /* slide out to right */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* --- Page Enter --- */
+body.page-enter-left {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+body.page-enter-right {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+body.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* --- Page Leave --- */
+body.page-leave-left-active {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+body.page-leave-right-active {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+                                                          /* ---- HERO SECTION ---- */
+
+/* --------------------------------------------------------------------------------------------------------------------*/
+.hero_frame {
+    width: 90%; /* container width */         
+    height: 1000px; /* temporary height */        
+    background-color: #454545;  /* temporary background color */
+    display: flex;          /* parent container type */     
+    align-items: center;    /* children alignment */
+    justify-content: center;   /* inner content justified */
+   
+}
+
+.hero_frame img {
+	width: 100%;
+	
 }
