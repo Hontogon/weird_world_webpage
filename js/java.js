@@ -66,3 +66,35 @@ document.querySelectorAll('nav a').forEach(link => {
     }, 500);
   });
 });
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hero = document.querySelector(".hero_text");
+
+  const text = hero.textContent;
+  const fantasy = "𓂀𓆣𓋹𓃭𓂀𓏏"; // temporary glyphs OR replace later
+
+  hero.textContent = "";
+
+  for (let i = 0; i < text.length; i++) {
+    const letter = document.createElement("span");
+
+    const front = document.createElement("span");
+    front.className = "front";
+    front.textContent = text[i];
+
+    const back = document.createElement("span");
+    back.className = "back";
+    back.textContent = fantasy[i] || text[i];
+
+    letter.appendChild(front);
+    letter.appendChild(back);
+    hero.appendChild(letter);
+  }
+});

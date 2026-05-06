@@ -1,12 +1,20 @@
 @charset "utf-8";                                        /* ---- DOCUMENT PROPERTIES | FONT | PAGE ---- */
 /* CSS Document */
 
+@import url('https://fonts.googleapis.com/css2?family=Jim+Nightshade&display=swap'); 
+
 @font-face {
   font-family: "TimeScript"; 
   src: url("../fonts/timescript.ttf") format("truetype"); /*implement custom font*/
   font-weight: normal;
   font-style: normal;
 }
+
+
+
+
+
+
 
 html, body { /* eliminate browser window/navbar gap */
   margin: 0;
@@ -39,6 +47,7 @@ nav {
   padding: 20px 0; /* padding around links */
   background-color: #222;
   position: fixed;
+	z-index: 1000; /* IMPORTANT */
 }
 
 /* NAVBAR LINKS */
@@ -176,16 +185,70 @@ body.page-leave-right-active {
 
 /* --------------------------------------------------------------------------------------------------------------------*/
 .hero_frame {
-    width: 90%; /* container width */         
-    height: 1000px; /* temporary height */        
-    background-color: #454545;  /* temporary background color */
-    display: flex;          /* parent container type */     
-    align-items: center;    /* children alignment */
-    justify-content: center;   /* inner content justified */
+   width: 90%;
+    height: 1000px;
+
+    position: relative;   /* anchor for absolute children */
+    overflow: hidden;
+
+    display: block; /* IMPORTANT: remove flex for now */
    
 }
 
 .hero_frame img {
 	width: 100%;
+	 object-fit: cover;
+
+    display: block;
 	
 }
+
+
+.hero_welcome{
+	 position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+
+    color: white;
+    font-size: 90px;
+    font-family: "Jim Nightshade", cursive;
+	font-size: 1000%;
+		5;
+
+}
+
+
+ /* ---- HISTORY SECTION ---- */
+
+/* --------------------------------------------------------------------------------------------------------------------*/
+
+.historytext {
+	
+width: 50%; /* container width */         
+    height: 100000px; /* temporary height */         
+    justify-content: center;   /* inner content justified */
+	
+}
+.historytext h5 {
+	font-size: 50px;
+	color: #ffffff;
+	align-items: center;
+	text-align: center;
+	font-family: "Jim Nightshade", cursive;
+	
+  
+	
+}
+
+.historytext p {
+	color: #ffffff;
+	font-size: 20px;
+	line-height: 150%;
+	
+}
+
