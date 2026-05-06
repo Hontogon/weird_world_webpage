@@ -32,7 +32,7 @@ body {
   min-width: 1024px; /* min screen size */
   width: 90%; /* container width */
   margin: 0 auto;
-  height: 1000px; /* temporary height for testing */
+  height: 10000000px; /* temporary height for testing */
   background-color: #282828;
   display: flex; /* navigation parent flexbox container */
   justify-content: center; /* inner children justified */
@@ -186,7 +186,7 @@ body.page-leave-right-active {
 /* --------------------------------------------------------------------------------------------------------------------*/
 .hero_frame {
    width: 90%;
-    height: 1000px;
+    height: 10000000px;
 
     position: relative;   /* anchor for absolute children */
     overflow: hidden;
@@ -249,7 +249,23 @@ width: 50%; /* container width */
 	color: #ffffff;
 	font-size: 20px;
 	line-height: 150%;
-	text-align: justify
+	text-align: justify;
 	
+}
+
+.historytext table {
+	color: #ffffff;
+	font-size: 20px;
+	line-height: 150%;
+	text-align: justify;
+}
+	
+	
+.historytext th {
+  text-align: justify;
+}
+
+.historytext table, th, td {
+  border: 1px solid #ffffff;
 }
 
