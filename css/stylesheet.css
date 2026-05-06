@@ -230,7 +230,7 @@ body.page-leave-right-active {
 .historytext {
 	
 width: 50%; /* container width */         
-    height: 100000px; /* temporary height */         
+    height: 10000000px; /* temporary height */         
     justify-content: center;   /* inner content justified */
 	
 }
@@ -249,6 +249,7 @@ width: 50%; /* container width */
 	color: #ffffff;
 	font-size: 20px;
 	line-height: 150%;
+	text-align: justify
 	
 }
 
