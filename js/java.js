@@ -98,3 +98,27 @@ document.addEventListener("DOMContentLoaded", () => {
     hero.appendChild(letter);
   }
 });
+
+/* ===============================
+   NAV LETTER SPLIT + FLIP EFFECT
+================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('nav a').forEach(link => {
+    // Your existing string transformation loop logic can remain intact safely here...
+    const text = link.textContent;
+    const fantasy = link.getAttribute('data-fantasy') || text;
+    // link.textContent structure continues...
+  });
+
+  /* ===============================
+     MOBILE NAV MENU TOGGLE 
+  ================================ */
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navElement = document.querySelector('nav');
+
+  if (menuToggle && navElement) {
+    menuToggle.addEventListener('click', () => {
+      navElement.classList.toggle('open');
+    });
+  }
+});

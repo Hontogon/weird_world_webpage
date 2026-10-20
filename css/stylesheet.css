@@ -291,3 +291,104 @@ width: 50%; /* container width */
   display: block;
 }
 
+
+/* ---- MOBILE NAVIGATION STYLING (UNDER 1024px) ---- */
+@media (max-width: 1023px) {
+  
+  /* Allow layout containers to shrink on mobile viewports */
+  .container {
+    min-width: 100%;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  /* Reposition nav bar to stack menu items vertically */
+  nav {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  /* Hamburger Icon Box Styling */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    align-self: flex-end; /* Keeps hamburger on right side */
+  }
+
+  /* Hamburger horizontal lines */
+  .menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+  }
+
+  /* Hide regular menu links by default on mobile devices */
+  nav a {
+    display: none;
+    width: 100%;
+    text-align: left;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+  }
+
+  /* Show links when the navbar has the .open class applied */
+  nav.open a {
+    display: block;
+  }
+
+  /* Force current active pages to display exclusively in fantasy font on mobile */
+  nav a.current {
+    font-family: "TimeScript", serif !important;
+    text-shadow: 
+      0 0 8px  #ffffff,
+      0 0 18px #ffffff;
+  }
+
+  /* Prevent 3D rotations on mobile links */
+  nav a span {
+    transform: none !important;
+    transition: none !important;
+  }
+  nav a span:hover {
+    transform: none !important;
+  }
+  nav a span .back {
+    display: none !important; /* Disables back flipped letters */
+  }
+  
+  /* Transforms hamburger icon into an 'X' close graphic when menu is open */
+  nav.open .menu-toggle span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  nav.open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  nav.open .menu-toggle span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+}
+
+/* Ensure the button is fully hidden on modern desktops */
+@media (min-width: 1024px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+
