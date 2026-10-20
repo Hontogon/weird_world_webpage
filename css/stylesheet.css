@@ -30,16 +30,14 @@ body {
 /* Container for page layout */
 
 .container {
-  max-width: 1920px; /* max screen size */
-  min-width: 1024px; /* min screen size */
-  width: 90%; /* container width */
+  max-width: 1920px; 
+  width: 90%; 
   margin: 0 auto;
-  height: 10000000px; /* temporary height for testing */
   background-color: #282828;
-  display: flex; /* navigation parent flexbox container */
-  justify-content: center; /* inner children justified */
+  display: flex; 
+  justify-content: center;
+  flex-wrap: wrap; /* Allows sections to drop below navbar on mobile */
 }
-
 /* NAVBOX LAYOUT */
 nav {
   width: 90%;
