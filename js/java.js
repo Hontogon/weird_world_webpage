@@ -1,19 +1,12 @@
 
-/* ===============================
-   NAV LETTER SPLIT + FLIP EFFECT
-================================ */
-
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('nav a').forEach(link => {
-    // Skip current page (leave it as-is)
-   
-
     const text = link.textContent;
     const fantasy = link.getAttribute('data-fantasy') || text;
 
     link.textContent = '';
 
-    for (let i = 0; i < text.length; i++) {
+    for (let i = 0; i < text.length; i += 1) {
       const letter = document.createElement('span');
 
       const front = document.createElement('span');
@@ -29,28 +22,57 @@ document.addEventListener('DOMContentLoaded', () => {
       link.appendChild(letter);
     }
   });
+
+  const hero = document.querySelector('.hero_text');
+
+  if (hero) {
+    const text = hero.textContent;
+    const fantasy = '𓂀𓆣𓋹𓃭𓂀𓏏';
+
+    hero.textContent = '';
+
+    for (let i = 0; i < text.length; i += 1) {
+      const letter = document.createElement('span');
+
+      const front = document.createElement('span');
+      front.className = 'front';
+      front.textContent = text[i];
+
+      const back = document.createElement('span');
+      back.className = 'back';
+      back.textContent = fantasy[i] || text[i];
+
+      letter.appendChild(front);
+      letter.appendChild(back);
+      hero.appendChild(letter);
+    }
+  }
+
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navElement = document.querySelector('nav');
+
+  if (menuToggle && navElement) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navElement.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
 });
 
-
-/* ===============================
-   PAGE TRANSITION ANIMATIONS
-================================ */
-
 document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', e => {
+  link.addEventListener('click', event => {
     const current = document.querySelector('nav a.current');
     if (!current) return;
 
     const currentIndex = Number(current.dataset.index);
     const targetIndex = Number(link.dataset.index);
 
-    // If clicking the same page, do nothing
     if (currentIndex === targetIndex) {
-      e.preventDefault();
+      event.preventDefault();
       return;
     }
 
-    e.preventDefault();
+    event.preventDefault();
 
     const direction = targetIndex > currentIndex ? 'right' : 'left';
     const href = link.getAttribute('href');
@@ -65,60 +87,4 @@ document.querySelectorAll('nav a').forEach(link => {
       window.location = href;
     }, 500);
   });
-});
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  const hero = document.querySelector(".hero_text");
-
-  const text = hero.textContent;
-  const fantasy = "𓂀𓆣𓋹𓃭𓂀𓏏"; // temporary glyphs OR replace later
-
-  hero.textContent = "";
-
-  for (let i = 0; i < text.length; i++) {
-    const letter = document.createElement("span");
-
-    const front = document.createElement("span");
-    front.className = "front";
-    front.textContent = text[i];
-
-    const back = document.createElement("span");
-    back.className = "back";
-    back.textContent = fantasy[i] || text[i];
-
-    letter.appendChild(front);
-    letter.appendChild(back);
-    hero.appendChild(letter);
-  }
-});
-
-/* ===============================
-   NAV LETTER SPLIT + FLIP EFFECT
-================================ */
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('nav a').forEach(link => {
-    // Your existing string transformation loop logic can remain intact safely here...
-    const text = link.textContent;
-    const fantasy = link.getAttribute('data-fantasy') || text;
-    // link.textContent structure continues...
-  });
-
-  /* ===============================
-     MOBILE NAV MENU TOGGLE 
-  ================================ */
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navElement = document.querySelector('nav');
-
-  if (menuToggle && navElement) {
-    menuToggle.addEventListener('click', () => {
-      navElement.classList.toggle('open');
-    });
-  }
 });

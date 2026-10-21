@@ -207,21 +207,18 @@ body.page-leave-right-active {
 
 
 .hero_welcome{
-	 position: absolute;
+  position: absolute;
 
-    top: 50%;
-    left: 50%;
+  top: 50%;
+  left: 50%;
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-    z-index: 2;
+  z-index: 2;
 
-    color: white;
-    font-size: 90px;
-    font-family: "Jim Nightshade", cursive;
-	font-size: 1000%;
-		5;
-
+  color: white;
+  font-family: "Jim Nightshade", cursive;
+  font-size: 1000%;
 }
 
 
@@ -390,5 +387,4 @@ width: 50%; /* container width */
     display: none;
   }
 }
-
 
